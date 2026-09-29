@@ -1,0 +1,22 @@
+databaseChangeLog:
+
+  - include:
+      file: ../01-ddl/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: ../02-dml/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: ../03-dcl/changelog.yaml
+      relativeToChangelogFile: true
+
+  - include:
+      file: ../04-tcl/changelog.yaml
+      relativeToChangelogFile: true
+
+  # Releases after the baseline (forward-only, never edit previous ones)
+  # - include:
+  #     file: ../06-releases/v1.1/changelog.yaml
+  #     relativeToChangelogFile: true

@@ -1,0 +1,14 @@
+databaseChangeLog:
+# Transaction Control Language
+
+# explicit atomic blocks (special cases)
+  - includeAll:
+      path: 00-transaction-blocks/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+# tagDatabase → marks versions (v1.0)
+  - includeAll:
+      path: 02-release-tags/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false

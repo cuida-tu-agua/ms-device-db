@@ -1,0 +1,42 @@
+# Uses the SQL Server started by ms-iam-db (container sy_water_db_dev, port 1433).
+# This compose does NOT start another SQL Server.
+services:
+  sqlserver-init:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sy_water_devices_init
+    environment:
+      MSSQL_SA_PASSWORD: ${MSSQL_SA_PASSWORD}
+      DEVICES_APP_PASSWORD: ${DEVICES_APP_PASSWORD}
+      DEVICES_MIGRATOR_PASSWORD: ${DEVICES_MIGRATOR_PASSWORD}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    command:
+      - /bin/bash
+      - -c
+      - >
+        /opt/mssql-tools18/bin/sqlcmd
+        -S host.docker.internal,1433 -U sa -P "$$MSSQL_SA_PASSWORD" -d master -C -b
+        -v DEVICES_APP_PASSWORD="$$DEVICES_APP_PASSWORD"
+        -v DEVICES_MIGRATOR_PASSWORD="$$DEVICES_MIGRATOR_PASSWORD"
+        -i /docker-entrypoint-initdb.d/00-init.sql
+    volumes:
+      - ./sqlserver-init:/docker-entrypoint-initdb.d
+
+  liquibase:
+    image: liquibase/liquibase:4.29
+    container_name: liquibase_ms_devices
+    environment:
+      LIQUIBASE_COMMAND_USERNAME: devices_migrator
+      LIQUIBASE_COMMAND_PASSWORD: ${DEVICES_MIGRATOR_PASSWORD}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - .:/workspace
+    depends_on:
+      sqlserver-init:
+        condition: service_completed_successfully
+    command: >
+      --defaultsFile=/workspace/liquibase.properties
+      --searchPath=/workspace
+      --changeLogFile=changelog/db.changelog-master.yaml
+      update

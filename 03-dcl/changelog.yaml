@@ -1,0 +1,20 @@
+databaseChangeLog:
+# Data Control Language (access control)
+
+# CREATE ROLE + membership
+  - includeAll:
+      path: 00-roles/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+# GRANT / REVOKE
+  - includeAll:
+      path: 01-grants/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+# database policies (RLS, optional)
+  - includeAll:
+      path: 02-policies/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: tcl-tag-001-baseline
+      author: diego
+      comment: Baseline tag of the devices domain (devices + link history + FKs + indexes + dev seed + grants)
+      changes:
+        - tagDatabase:
+            tag: v1.0-baseline

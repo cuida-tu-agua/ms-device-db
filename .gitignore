@@ -1,0 +1,7 @@
+# Real Liquibase credentials (NEVER commit)
+.env
+
+# Logs / temp files
+*.log
+/target/
+/.liquibase/

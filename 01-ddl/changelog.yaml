@@ -1,0 +1,47 @@
+databaseChangeLog:
+
+  - includeAll:
+      path: 01-schemas/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+    # user-defined types
+  - includeAll:
+      path: 02-types/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 03-tables/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 04-alter/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 05-views/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 06-functions/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 07-procedures/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 08-triggers/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 09-indexes/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
