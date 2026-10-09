@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.1-tcl-tag-001
+      author: diego
+      comment: device_admin_log + the app can register devices (admin panel, HU-061 meters)
+      changes:
+        - tagDatabase:
+            tag: v1.1-admin-devices

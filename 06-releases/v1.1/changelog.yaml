@@ -1,0 +1,28 @@
+databaseChangeLog:
+# Release v1.1 — admin panel of meters: admin log + permission to register devices.
+# Runs AFTER the v1.0 baseline. Order: tables → FK → indexes → grants → tag.
+
+  - includeAll:
+      path: 01-ddl/03-tables/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 01-ddl/04-alter/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 01-ddl/09-indexes/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 03-dcl/01-grants/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 04-tcl/02-release-tags/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
