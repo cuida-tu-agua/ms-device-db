@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.2-tcl-tag-001
+      author: esteban
+      comment: devices are disconnected after 1 minute without reports (HU-013 hotfix)
+      changes:
+        - tagDatabase:
+            tag: v1.2-offline-1min

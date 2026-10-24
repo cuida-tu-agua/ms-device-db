@@ -1,0 +1,18 @@
+databaseChangeLog:
+# Release v1.2 — HU-013 hotfix: "disconnected" after 1 minute without reports. Runs AFTER v1.1.
+# Order: default of the column → existing devices → tag.
+
+  - includeAll:
+      path: 01-ddl/04-alter/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 02-dml/04-patches/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
+
+  - includeAll:
+      path: 04-tcl/02-release-tags/
+      relativeToChangelogFile: true
+      errorIfMissingOrEmpty: false
